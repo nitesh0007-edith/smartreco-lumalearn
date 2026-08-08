@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="product-hero page-width" data-accent="{{ product.accent }}">
+  <div class="breadcrumbs"><a href="/">Explore</a><span>/</span><a href="/?category={{ product.category|urlencode }}">{{ product.category }}</a><span>/</span><strong>{{ product.title }}</strong></div>
+  <div class="product-layout">
+    <div class="product-copy">
+      <div class="kicker"><span>✦</span> {{ product.category }} · {{ product.level }}</div>
+      <h1>{{ product.title }}</h1>
+      <p>{{ product.description }}</p>
+      <div class="tag-row">{% for tag in product.tags_json|tags %}<span>{{ tag }}</span>{% endfor %}</div>
+      <div class="product-actions">
+        {% if user %}
+        <form action="/cart/add/{{ product.id }}" method="post">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          <button class="button button-primary" type="submit" data-track-product="{{ product.id }}" data-track-source="cart-cta">Add to cart <span>→</span></button>
+        </form>
+        <a class="button button-ghost" href="/cart">View cart</a>
+        {% else %}<a class="button button-primary" href="/login">Sign in to enrol <span>→</span></a>{% endif %}
+        <span class="subtle">Use MESH_FREE at checkout for the demo.</span>
+      </div>
+    </div>
+    <aside class="course-summary-card">
+      <div class="summary-art"><span>{{ product.category[0] }}{{ product.title[0] }}</span><i></i><b></b></div>
+      <div class="summary-price">{{ product.price|money }}</div>
+      <dl><div><dt>Learning time</dt><dd>{{ product.duration_minutes|duration }}</dd></div><div><dt>Level</dt><dd>{{ product.level }}</dd></div><div><dt>Format</dt><dd>Project-led</dd></div><div><dt>Access</dt><dd>Lifetime</dd></div></dl>
+    </aside>
+  </div>
+</section>
+{% if related %}
+<section class="related page-width"><div class="section-heading"><div><span class="overline">Keep exploring</span><h2>More in {{ product.category }}</h2></div></div><div class="course-grid">{% for product in related %}{% include "components/product_card.html" %}{% endfor %}</div></section>
+{% endif %}
+{% endblock %}

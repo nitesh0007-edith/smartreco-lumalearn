@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-intro page-width"><div><div class="kicker"><span>◎</span> Your learning basket</div><h1>Cart, {{ user.name.split()[0] }}</h1><p>Cart and purchase signals help LumaLearn recommend the next complementary step.</p></div></section>
+<section class="page-width cart-layout">
+  <div class="cart-list">
+    {% for item in items %}
+    <article class="cart-item"><div><span class="overline">{{ item.product.category }} · {{ item.product.level }}</span><h2>{{ item.product.title }}</h2><p>{{ item.product.description|truncate(140) }}</p></div><div class="cart-price">{{ item.product.price|money }}<form action="/cart/remove/{{ item.product_id }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="text-button" type="submit">Remove</button></form></div></article>
+    {% else %}<div class="empty-recommendation"><div><span class="overline">No courses yet</span><h2>Build your next step</h2><p>Add a course from the catalog, then try the sponsor demo code at checkout.</p><a class="button button-primary" href="/">Explore courses <span>→</span></a></div></div>{% endfor %}
+  </div>
+  {% if items %}<aside class="checkout-card"><span class="overline">Demo checkout</span><h2>Unlock your path</h2><p>Use <strong>MESH_FREE</strong> to simulate a sponsored free enrolment.</p><form action="/checkout" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><label for="discount_code">Discount code</label><input id="discount_code" name="discount_code" placeholder="MESH_FREE" autocomplete="off"><button class="button button-primary" type="submit">Complete enrolment <span>→</span></button></form></aside>{% endif %}
+</section>
+{% endblock %}

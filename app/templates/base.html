@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="description" content="LumaLearn turns your learning intent into grounded, useful course recommendations.">
+    <title>{{ page_title or 'Learn with intent' }} · LumaLearn</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2228%22 fill=%22%236d5dfc%22/><path d=%22M27 70V28h13v31h33v11z%22 fill=%22white%22/></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}?v=20260808">
+    <script defer src="{{ url_for('static', path='/js/app.js') }}?v=20260808"></script>
+    {% if user %}<script defer src="{{ url_for('static', path='/js/tracking.js') }}?v=20260808"></script>{% endif %}
+  </head>
+  <body
+    data-authenticated="{{ 'true' if user else 'false' }}"
+    data-product-id="{{ product.id if product is defined and product else '' }}"
+    data-search-query="{{ query if query is defined else '' }}"
+    data-page="{{ request.url.path }}"
+  >
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="LumaLearn home">
+        <span class="brand-mark">L</span>
+        <span>Luma<span>Learn</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/" class="{{ 'active' if request.url.path == '/' else '' }}">Explore</a>
+        <a href="/how-it-works" class="{{ 'active' if request.url.path == '/how-it-works' else '' }}">How it works</a>
+        {% if user %}
+          <a href="/for-you" class="nav-spark {{ 'active' if request.url.path == '/for-you' else '' }}">For you <span>✦</span></a>
+          <a href="/learning" class="{{ 'active' if request.url.path == '/learning' else '' }}">My learning</a>
+          <a href="/your-signal" class="{{ 'active' if request.url.path == '/your-signal' else '' }}">Your signal</a>
+          <a href="/cart" class="{{ 'active' if request.url.path == '/cart' else '' }}">Cart</a>
+          {% if user.role == 'admin' %}<a href="/admin" class="{{ 'active' if request.url.path.startswith('/admin') else '' }}">Admin</a>{% endif %}
+        {% endif %}
+      </nav>
+      <div class="header-actions">
+        {% if user %}
+          <a class="avatar avatar-link" title="Your profile" href="/profile">{{ user.name[0]|upper }}</a>
+          <form action="/logout" method="post" class="inline-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <button class="button button-ghost button-small" type="submit">Sign out</button>
+          </form>
+        {% else %}
+          <a class="button button-ghost button-small" href="/login">Sign in</a>
+          <a class="button button-primary button-small" href="/register">Start learning</a>
+        {% endif %}
+        <button class="menu-button" type="button" data-menu-button aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </header>
+    <div class="mobile-nav" data-mobile-menu hidden>
+      <a href="/">Explore</a>
+      <a href="/how-it-works">How it works</a>
+      {% if user %}<a href="/for-you">For you ✦</a><a href="/learning">My learning</a><a href="/your-signal">Your signal</a><a href="/cart">Cart</a><a href="/profile">Profile</a>{% endif %}
+      {% if user and user.role == 'admin' %}<a href="/admin">Admin</a>{% endif %}
+    </div>
+
+    {% if flashes %}
+      <div class="flash-stack" aria-live="polite">
+        {% for flash in flashes %}<div class="flash flash-{{ flash.category }}">{{ flash.message }}</div>{% endfor %}
+      </div>
+    {% endif %}
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand footer-brand" href="/"><span class="brand-mark">L</span><span>Luma<span>Learn</span></span></a>
+        <p>Recommendations that evolve with your curiosity.</p>
+      </div>
+      <div class="footer-meta">
+        <span><i class="status-dot"></i> Grounded in the live catalog</span>
+        <span>AI routed exclusively through Mesh API</span>
+      </div>
+    </footer>
+  </body>
+</html>

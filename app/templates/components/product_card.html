@@ -1,0 +1,23 @@
+<article class="course-card" data-accent="{{ product.accent }}">
+  <a
+    href="/products/{{ product.slug }}"
+    class="course-art"
+    data-track-product="{{ product.id }}"
+    data-track-source="{{ track_source|default('catalog') }}"
+    aria-label="Open {{ product.title }}"
+  >
+    <span class="course-orbit orbit-a"></span>
+    <span class="course-orbit orbit-b"></span>
+    <span class="course-glyph">{{ product.category[0] }}{{ product.title[0] }}</span>
+    <span class="course-level">{{ product.level }}</span>
+  </a>
+  <div class="course-body">
+    <div class="eyebrow-row"><span>{{ product.category }}</span><span>{{ product.duration_minutes|duration }}</span></div>
+    <h3><a href="/products/{{ product.slug }}" data-track-product="{{ product.id }}" data-track-source="{{ track_source|default('catalog') }}">{{ product.title }}</a></h3>
+    <p>{{ product.description|truncate(118) }}</p>
+    <div class="course-footer">
+      <strong>{{ product.price|money }}</strong>
+      <a href="/products/{{ product.slug }}" class="arrow-link" data-track-product="{{ product.id }}" data-track-source="{{ track_source|default('catalog') }}">Explore <span>↗</span></a>
+    </div>
+  </div>
+</article>

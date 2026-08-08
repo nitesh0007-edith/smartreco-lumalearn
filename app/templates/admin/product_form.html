@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="form-page page-width">
+  <div class="form-intro"><a href="/admin" class="back-link">← Admin overview</a><div class="kicker"><span>◇</span> Dual-write catalog</div><h1>{{ 'Edit course' if product else 'Add a course' }}</h1><p>Saving commits the SQL record and a durable outbox job. Mesh creates the embedding; Chroma receives the same version.</p><div class="write-diagram"><span>Admin form</span><i>→</i><span>SQL + outbox</span><i>→</i><span>Mesh embedding</span><i>→</i><span>Chroma</span></div></div>
+  <form class="product-form" method="post" action="{{ '/admin/products/' ~ product.id ~ '/edit' if product else '/admin/products/new' }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">{% if error %}<div class="form-error">{{ error }}</div>{% endif %}
+    {% set value = values or {} %}
+    <label class="span-two">Course title<input name="title" required minlength="3" maxlength="180" value="{{ value.get('title', product.title if product else '') }}" placeholder="e.g. Reliable AI Agents in Production"></label>
+    <label class="span-two">Description<textarea name="description" required minlength="20" maxlength="5000" rows="6" placeholder="What will a learner be able to do?">{{ value.get('description', product.description if product else '') }}</textarea></label>
+    <label>Category<input name="category" required value="{{ value.get('category', product.category if product else '') }}" placeholder="Agentic AI"></label>
+    <label>Level<select name="level" required>{% for level in ['Beginner','Intermediate','Advanced','All levels'] %}{% set selected_level = value.get('level', product.level if product else 'Intermediate') %}<option {% if selected_level == level %}selected{% endif %}>{{ level }}</option>{% endfor %}</select></label>
+    <label>Price (£)<input name="price" type="number" min="0" max="100000" step="0.01" required value="{{ value.get('price', product.price if product else '99') }}"></label>
+    <label>Duration (minutes)<input name="duration_minutes" type="number" min="15" required value="{{ value.get('duration_minutes', product.duration_minutes if product else '360') }}"></label>
+    <label class="span-two">Semantic tags <input name="tags" required value="{{ value.get('tags', (product.tags_json|tags|join(', ')) if product else '') }}" placeholder="agents, orchestration, tool use, evaluation"><small>Comma-separated. These become part of the vector document.</small></label>
+    <fieldset class="span-two"><legend>Visual accent</legend><div class="accent-options">{% for accent in ['violet','cyan','amber','rose','lime','blue'] %}{% set selected_accent = value.get('accent', product.accent if product else 'violet') %}<label><input type="radio" name="accent" value="{{ accent }}" {% if selected_accent == accent %}checked{% endif %}><span data-accent="{{ accent }}"></span>{{ accent|title }}</label>{% endfor %}</div></fieldset>
+    <div class="form-actions span-two"><a href="/admin" class="button button-ghost">Cancel</a><button type="submit" class="button button-primary">{{ 'Save & re-index' if product else 'Create & index' }} <span>→</span></button></div>
+  </form>
+</section>
+{% endblock %}

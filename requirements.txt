@@ -1,0 +1,19 @@
+fastapi==0.116.1
+uvicorn[standard]==0.35.0
+sqlalchemy==2.0.42
+pydantic-settings==2.10.1
+jinja2==3.1.6
+python-multipart==0.0.20
+itsdangerous==2.2.0
+openai==1.98.0
+chromadb==1.0.15
+langgraph==0.6.2
+pwdlib[argon2]==0.2.1
+email-validator==2.2.0
+apscheduler==3.11.0
+httpx==0.28.1
+
+# Test and quality tooling
+pytest==8.4.1
+pytest-cov==6.2.1
+ruff==0.12.7

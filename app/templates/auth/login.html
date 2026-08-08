@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth-shell page-width">
+  <div class="auth-story"><div class="kicker"><span>✦</span> Welcome back</div><h1>Pick up where your curiosity left off.</h1><p>Your stored path and recent learning signal are waiting.</p><div class="story-signal"><span>today’s signal</span><strong>Agent systems</strong><strong>RAG engineering</strong><strong>+ production AI</strong></div></div>
+  <form class="auth-card" method="post" action="/login">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}"><span class="overline">Member access</span><h2>Sign in to LumaLearn</h2>
+    {% if error %}<div class="form-error">{{ error }}</div>{% endif %}
+    <label>Email address<input type="email" name="email" required autocomplete="email" value="{{ values.email if values else '' }}" placeholder="you@example.com"></label>
+    <label>Password<input type="password" name="password" required autocomplete="current-password" placeholder="Your password"></label>
+    <button class="button button-primary button-full" type="submit">Sign in <span>→</span></button><p class="form-foot"><a href="/forgot-password">Forgot your password?</a></p><p class="form-foot">New here? <a href="/register">Create an account</a></p>
+  </form>
+</section>
+{% endblock %}

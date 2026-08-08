@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-intro page-width signal-intro">
+  <div><div class="kicker"><span>◎</span> Explainable by design</div><h1>Your learning signal</h1><p>See the same high-level evidence the agent uses. Raw activity stays attached to your account and recommendations stay grounded in real courses.</p></div>
+  <label class="digest-toggle"><span><strong>Daily learning digest</strong><small>Send the latest path by email</small></span><input type="checkbox" data-digest-toggle {% if user.digest_opt_in %}checked{% endif %}><i></i></label>
+</section>
+<section class="signal-dashboard page-width">
+  <div class="signal-metric"><span>Events considered</span><strong>{{ profile.event_count }}</strong><small>Last 30 days, capped at 120</small></div>
+  <div class="signal-metric"><span>Weighted intent</span><strong>{{ '%.1f'|format(profile.total_weight) }}</strong><small>Search and deep dwell count more</small></div>
+  <div class="signal-metric"><span>Latest event</span><strong>#{{ profile.max_event_id }}</strong><small>Used for efficient refresh triggers</small></div>
+  <div class="signal-profile-card">
+    <span class="overline">Current interpretation</span><p>{{ profile.summary }}</p>
+    <div class="signal-groups">
+      <div><strong>Categories</strong><div class="tag-row">{% for item in profile.top_categories %}<span>{{ item }}</span>{% else %}<small>Keep exploring</small>{% endfor %}</div></div>
+      <div><strong>Topics</strong><div class="tag-row">{% for item in profile.top_topics %}<span>{{ item }}</span>{% else %}<small>No topic signal yet</small>{% endfor %}</div></div>
+      <div><strong>Searches</strong><div class="tag-row">{% for item in profile.top_searches %}<span>“{{ item }}”</span>{% else %}<small>No searches yet</small>{% endfor %}</div></div>
+    </div>
+  </div>
+  <div class="agent-run-card">
+    <div class="card-heading"><div><span class="overline">Agent observability</span><h2>Recent workflow runs</h2></div><span class="trace-badge">LangGraph</span></div>
+    {% if runs %}<div class="run-list">{% for run in runs %}<div class="run-row"><span class="run-status status-{{ run.status }}"></span><div><strong>{{ run.trigger|replace('_', ' ')|title }}</strong><small>{{ run.trace_id[:8] }} · {{ run.started_at|relative_time }}</small></div><span class="run-decision">{{ run.decision or run.status }}</span><span class="token-count">{{ run.prompt_tokens + run.completion_tokens }} tokens</span></div>{% endfor %}</div>{% else %}<div class="small-empty">The workflow trace will appear after Luma has enough signal to run.</div>{% endif %}
+  </div>
+</section>
+{% endblock %}

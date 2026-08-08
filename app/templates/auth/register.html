@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth-shell page-width">
+  <div class="auth-story"><div class="kicker"><span>✦</span> Your path, not the crowd’s</div><h1>Let your interests shape what comes next.</h1><p>Browse naturally. Your recommendations become sharper as your intent takes shape.</p><div class="privacy-note"><span>◎</span><div><strong>Transparent personalization</strong><small>See the high-level signal used for every path.</small></div></div></div>
+  <form class="auth-card" method="post" action="/register">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}"><span class="overline">Free learning account</span><h2>Start your signal</h2>
+    {% if error %}<div class="form-error">{{ error }}</div>{% endif %}
+    <label>Your name<input type="text" name="name" required autocomplete="name" value="{{ values.name if values else '' }}" placeholder="Ada Lovelace"></label>
+    <label>Email address<input type="email" name="email" required autocomplete="email" value="{{ values.email if values else '' }}" placeholder="you@example.com"></label>
+    <label>Target role <select name="target_role"><option value="">Choose a direction (optional)</option>{% for role in ['Data Analyst','Data Scientist','AI Engineer','LLM Engineer','Prompt Engineer','Data Engineer','MLOps Engineer','Cloud Engineer'] %}<option value="{{ role }}">{{ role }}</option>{% endfor %}</select><small>This gives Luma a useful starting point; your behavior can change the path.</small></label>
+    <label>Password<input type="password" name="password" minlength="10" required autocomplete="new-password" placeholder="At least 10 characters"><small>Use at least 10 characters.</small></label>
+    <button class="button button-primary button-full" type="submit">Create account <span>→</span></button><p class="form-foot">Already learning? <a href="/login">Sign in</a></p>
+  </form>
+</section>
+{% endblock %}

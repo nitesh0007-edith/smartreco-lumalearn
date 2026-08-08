@@ -1,0 +1,362 @@
+[
+  {
+    "title": "Agentic AI Systems: From Plan to Production",
+    "description": "Design dependable AI agents that plan, use tools, preserve state, recover from failure, and ship behind production APIs. Build a complete research agent with evaluation gates and human oversight.",
+    "category": "Agentic AI",
+    "level": "Advanced",
+    "price": "149.00",
+    "duration_minutes": 720,
+    "tags": ["ai agents", "tool use", "planning", "evaluation", "production ai"],
+    "accent": "violet"
+  },
+  {
+    "title": "RAG Engineering with Vector Databases",
+    "description": "Build grounded retrieval systems using embeddings, hybrid search, metadata filters, re-ranking, and rigorous retrieval evaluation. Includes practical Chroma and Qdrant projects.",
+    "category": "Generative AI",
+    "level": "Intermediate",
+    "price": "119.00",
+    "duration_minutes": 600,
+    "tags": ["rag", "embeddings", "vector database", "semantic search", "reranking"],
+    "accent": "cyan"
+  },
+  {
+    "title": "FastAPI Backend Engineering",
+    "description": "Create typed, secure Python APIs with FastAPI, SQLAlchemy, background work, authentication, testing, and deployment patterns that hold up beyond a tutorial.",
+    "category": "Backend Engineering",
+    "level": "Intermediate",
+    "price": "89.00",
+    "duration_minutes": 540,
+    "tags": ["fastapi", "python", "sqlalchemy", "api design", "testing"],
+    "accent": "blue"
+  },
+  {
+    "title": "LLM Evaluation That Teams Can Trust",
+    "description": "Turn subjective AI quality into an evaluation program. Design golden sets, model-graded checks, retrieval metrics, regression suites, and production feedback loops.",
+    "category": "AI Reliability",
+    "level": "Advanced",
+    "price": "129.00",
+    "duration_minutes": 480,
+    "tags": ["llm evaluation", "observability", "quality", "regression testing", "metrics"],
+    "accent": "amber"
+  },
+  {
+    "title": "Practical Prompt Systems",
+    "description": "Move beyond prompt tricks to reusable prompt architecture: structured outputs, tool contracts, context design, injection defenses, caching, and model portability.",
+    "category": "Generative AI",
+    "level": "Beginner",
+    "price": "69.00",
+    "duration_minutes": 300,
+    "tags": ["prompt engineering", "structured output", "context", "security", "llm"],
+    "accent": "rose"
+  },
+  {
+    "title": "Behavioral Product Analytics",
+    "description": "Instrument useful events, define funnels and cohorts, interpret intent signals, and build privacy-aware product insights without drowning your team in vanity metrics.",
+    "category": "Product Analytics",
+    "level": "Intermediate",
+    "price": "79.00",
+    "duration_minutes": 420,
+    "tags": ["analytics", "event tracking", "funnels", "experimentation", "user behavior"],
+    "accent": "lime"
+  },
+  {
+    "title": "Recommendation Systems in Practice",
+    "description": "Learn collaborative, content-based, and hybrid recommendation methods, then add cold-start strategies, ranking, online evaluation, and responsible personalization.",
+    "category": "Machine Learning",
+    "level": "Advanced",
+    "price": "139.00",
+    "duration_minutes": 660,
+    "tags": ["recommendation systems", "ranking", "personalization", "machine learning", "cold start"],
+    "accent": "violet"
+  },
+  {
+    "title": "Modern SQL for Data Products",
+    "description": "Use SQL confidently for analytics and application features: window functions, query plans, indexes, data modeling, and reliable transformations through realistic exercises.",
+    "category": "Data Engineering",
+    "level": "Beginner",
+    "price": "59.00",
+    "duration_minutes": 360,
+    "tags": ["sql", "data modeling", "query optimization", "analytics", "databases"],
+    "accent": "cyan"
+  },
+  {
+    "title": "Production ML Systems",
+    "description": "Take models from notebook to dependable service with feature pipelines, versioning, monitoring, drift response, safe rollout patterns, and cost-aware infrastructure.",
+    "category": "MLOps",
+    "level": "Advanced",
+    "price": "159.00",
+    "duration_minutes": 780,
+    "tags": ["mlops", "model monitoring", "deployment", "pipelines", "drift"],
+    "accent": "rose"
+  },
+  {
+    "title": "Python Foundations Through Real Projects",
+    "description": "Build fluency with Python syntax, data structures, functions, modules, debugging, and tests by completing four useful applications from scratch.",
+    "category": "Programming",
+    "level": "Beginner",
+    "price": "49.00",
+    "duration_minutes": 480,
+    "tags": ["python", "programming", "debugging", "testing", "fundamentals"],
+    "accent": "blue"
+  },
+  {
+    "title": "AI UX: Designing Human-Centred Copilots",
+    "description": "Design AI product experiences that communicate uncertainty, earn trust, support correction, and keep people in control. Prototype a copilot from first interaction to failure recovery.",
+    "category": "Product Design",
+    "level": "Intermediate",
+    "price": "99.00",
+    "duration_minutes": 390,
+    "tags": ["ai ux", "product design", "human in the loop", "trust", "copilots"],
+    "accent": "amber"
+  },
+  {
+    "title": "Cloud Deployment for Python Teams",
+    "description": "Package, deploy, and operate Python services with containers, managed databases, CI/CD, secrets, health checks, logging, and pragmatic scaling choices.",
+    "category": "Cloud Engineering",
+    "level": "Intermediate",
+    "price": "109.00",
+    "duration_minutes": 510,
+    "tags": ["docker", "deployment", "ci cd", "cloud", "observability"],
+    "accent": "lime"
+  },
+  {
+    "title": "Data Analysis with Python and Pandas",
+    "description": "Turn messy business data into clear answers with Python, pandas, notebooks, joins, reshaping, and reproducible analysis projects.",
+    "category": "Data Analytics",
+    "level": "Beginner",
+    "price": "69.00",
+    "duration_minutes": 420,
+    "tags": ["data analyst", "python", "pandas", "data cleaning", "analysis"],
+    "accent": "cyan"
+  },
+  {
+    "title": "SQL Analytics Interview Lab",
+    "description": "Practice the SQL patterns data analysts use every day: cohorts, funnels, retention, window functions, segmentation, and business case questions.",
+    "category": "Data Analytics",
+    "level": "Intermediate",
+    "price": "79.00",
+    "duration_minutes": 360,
+    "tags": ["data analyst", "sql", "analytics", "interviews", "funnels"],
+    "accent": "amber"
+  },
+  {
+    "title": "Storytelling with Data and Dashboards",
+    "description": "Design decision-ready dashboards, choose meaningful metrics, communicate uncertainty, and present an analytical story leaders can act on.",
+    "category": "Data Analytics",
+    "level": "Intermediate",
+    "price": "74.00",
+    "duration_minutes": 330,
+    "tags": ["data analyst", "dashboards", "visualization", "storytelling", "metrics"],
+    "accent": "rose"
+  },
+  {
+    "title": "Statistics for Data Scientists",
+    "description": "Build the statistical intuition behind experiments and machine learning with probability, sampling, confidence intervals, hypothesis tests, and practical case studies.",
+    "category": "Data Science",
+    "level": "Intermediate",
+    "price": "99.00",
+    "duration_minutes": 600,
+    "tags": ["data scientist", "statistics", "probability", "experiments", "python"],
+    "accent": "violet"
+  },
+  {
+    "title": "Feature Engineering for Tabular ML",
+    "description": "Transform real-world tables into reliable machine learning features while preventing leakage, handling missingness, encoding categories, and validating generalization.",
+    "category": "Data Science",
+    "level": "Intermediate",
+    "price": "109.00",
+    "duration_minutes": 540,
+    "tags": ["data scientist", "machine learning", "features", "pandas", "modeling"],
+    "accent": "lime"
+  },
+  {
+    "title": "Experiment Design and Causal Thinking",
+    "description": "Plan trustworthy product experiments, reason about causality, choose metrics, estimate power, and interpret results without overclaiming.",
+    "category": "Data Science",
+    "level": "Advanced",
+    "price": "119.00",
+    "duration_minutes": 480,
+    "tags": ["data scientist", "experimentation", "causal inference", "statistics", "metrics"],
+    "accent": "blue"
+  },
+  {
+    "title": "Deep Learning with PyTorch Projects",
+    "description": "Learn neural network fundamentals by building image, text, and tabular models in PyTorch with training loops, diagnostics, and reproducible experiments.",
+    "category": "Machine Learning",
+    "level": "Intermediate",
+    "price": "129.00",
+    "duration_minutes": 720,
+    "tags": ["data scientist", "deep learning", "pytorch", "neural networks", "python"],
+    "accent": "violet"
+  },
+  {
+    "title": "LLM Application Architecture",
+    "description": "Design production LLM applications with model routing, context management, structured outputs, tool calls, retries, budgets, and human review.",
+    "category": "LLM Engineering",
+    "level": "Advanced",
+    "price": "149.00",
+    "duration_minutes": 660,
+    "tags": ["llm", "ai engineer", "architecture", "tools", "production ai"],
+    "accent": "cyan"
+  },
+  {
+    "title": "Fine-Tuning and Adaptation for Language Models",
+    "description": "Choose between prompting, retrieval, adapters, and fine-tuning, then prepare datasets and evaluate an adapted language model responsibly.",
+    "category": "LLM Engineering",
+    "level": "Advanced",
+    "price": "159.00",
+    "duration_minutes": 780,
+    "tags": ["llm", "fine tuning", "language models", "ai engineer", "evaluation"],
+    "accent": "rose"
+  },
+  {
+    "title": "LLM Cost and Latency Optimization",
+    "description": "Make AI products faster and cheaper with token budgets, caching, batching, model selection, streaming, fallbacks, and practical load tests.",
+    "category": "LLM Engineering",
+    "level": "Intermediate",
+    "price": "109.00",
+    "duration_minutes": 420,
+    "tags": ["llm", "optimization", "latency", "cost", "ai engineer"],
+    "accent": "amber"
+  },
+  {
+    "title": "Prompt Engineering for Reliable Workflows",
+    "description": "Create prompts that remain reliable across models using decomposition, examples, constraints, self-checks, structured outputs, and evaluation-driven iteration.",
+    "category": "Prompt Engineering",
+    "level": "Beginner",
+    "price": "59.00",
+    "duration_minutes": 300,
+    "tags": ["prompt engineering", "llm", "structured output", "reliability", "workflows"],
+    "accent": "amber"
+  },
+  {
+    "title": "Prompt Security and Injection Defense",
+    "description": "Threat-model LLM applications, defend against prompt injection and data exfiltration, and build safe system prompts with layered controls.",
+    "category": "Prompt Engineering",
+    "level": "Intermediate",
+    "price": "89.00",
+    "duration_minutes": 390,
+    "tags": ["prompt engineering", "security", "prompt injection", "llm", "ai safety"],
+    "accent": "rose"
+  },
+  {
+    "title": "Tool-Calling Agents with Python",
+    "description": "Build tool-using assistants that validate arguments, recover from errors, preserve state, and expose clear traces for debugging and evaluation.",
+    "category": "Agentic AI",
+    "level": "Intermediate",
+    "price": "119.00",
+    "duration_minutes": 540,
+    "tags": ["ai engineer", "agents", "tool calling", "python", "llm"],
+    "accent": "violet"
+  },
+  {
+    "title": "Data Pipelines with Airflow",
+    "description": "Orchestrate dependable batch pipelines with Airflow DAGs, schedules, retries, backfills, data quality checks, and observable task dependencies.",
+    "category": "Data Engineering",
+    "level": "Intermediate",
+    "price": "119.00",
+    "duration_minutes": 600,
+    "tags": ["data engineer", "airflow", "pipelines", "orchestration", "etl"],
+    "accent": "blue"
+  },
+  {
+    "title": "Streaming Data with Kafka",
+    "description": "Design event-driven data platforms with Kafka topics, partitions, consumer groups, delivery semantics, schema evolution, and monitoring.",
+    "category": "Data Engineering",
+    "level": "Advanced",
+    "price": "139.00",
+    "duration_minutes": 660,
+    "tags": ["data engineer", "kafka", "streaming", "events", "distributed systems"],
+    "accent": "cyan"
+  },
+  {
+    "title": "Data Warehousing with dbt",
+    "description": "Build tested analytical models with dbt, dimensional design, incremental transformations, documentation, lineage, and collaborative deployment workflows.",
+    "category": "Data Engineering",
+    "level": "Intermediate",
+    "price": "109.00",
+    "duration_minutes": 480,
+    "tags": ["data engineer", "dbt", "data warehouse", "sql", "analytics engineering"],
+    "accent": "lime"
+  },
+  {
+    "title": "Data Quality and Observability",
+    "description": "Prevent silent pipeline failures with contracts, freshness checks, anomaly detection, lineage, incident response, and actionable data quality ownership.",
+    "category": "Data Engineering",
+    "level": "Intermediate",
+    "price": "99.00",
+    "duration_minutes": 420,
+    "tags": ["data engineer", "data quality", "observability", "pipelines", "governance"],
+    "accent": "amber"
+  },
+  {
+    "title": "Kubernetes for AI Engineers",
+    "description": "Deploy model and agent services on Kubernetes with containers, health checks, autoscaling, secrets, jobs, and practical service debugging.",
+    "category": "Cloud Engineering",
+    "level": "Advanced",
+    "price": "139.00",
+    "duration_minutes": 660,
+    "tags": ["ai engineer", "kubernetes", "cloud", "containers", "deployment"],
+    "accent": "blue"
+  },
+  {
+    "title": "MLOps with CI/CD and Model Registries",
+    "description": "Automate model testing and delivery with CI/CD, registries, reproducible artifacts, approval gates, deployment strategies, and rollback plans.",
+    "category": "MLOps",
+    "level": "Advanced",
+    "price": "149.00",
+    "duration_minutes": 720,
+    "tags": ["mlops", "model registry", "ci cd", "deployment", "machine learning"],
+    "accent": "rose"
+  },
+  {
+    "title": "Monitoring AI Systems in Production",
+    "description": "Observe AI quality, latency, cost, drift, safety, and user outcomes with useful traces, dashboards, alerts, and feedback loops.",
+    "category": "MLOps",
+    "level": "Intermediate",
+    "price": "119.00",
+    "duration_minutes": 510,
+    "tags": ["mlops", "ai reliability", "monitoring", "observability", "production ai"],
+    "accent": "lime"
+  },
+  {
+    "title": "AWS Foundations for Data Platforms",
+    "description": "Understand the AWS building blocks behind modern data products: IAM, storage, compute, networking, managed databases, and cost-aware architecture.",
+    "category": "Cloud Engineering",
+    "level": "Beginner",
+    "price": "79.00",
+    "duration_minutes": 450,
+    "tags": ["cloud", "aws", "data engineer", "architecture", "security"],
+    "accent": "amber"
+  },
+  {
+    "title": "Python APIs for AI Products",
+    "description": "Ship production-ready AI endpoints with FastAPI, async work, streaming responses, authentication, rate limits, validation, and tests.",
+    "category": "Backend Engineering",
+    "level": "Intermediate",
+    "price": "99.00",
+    "duration_minutes": 510,
+    "tags": ["ai engineer", "fastapi", "python", "apis", "backend"],
+    "accent": "blue"
+  },
+  {
+    "title": "Responsible AI and Model Governance",
+    "description": "Create practical governance for AI products with risk assessments, documentation, human oversight, privacy controls, and launch review checklists.",
+    "category": "AI Reliability",
+    "level": "Intermediate",
+    "price": "89.00",
+    "duration_minutes": 360,
+    "tags": ["ai safety", "governance", "responsible ai", "risk", "compliance"],
+    "accent": "rose"
+  },
+  {
+    "title": "Analytics Engineering with Modern SQL",
+    "description": "Bridge analysis and engineering by building modular, tested, documented SQL models that deliver trusted metrics to every team.",
+    "category": "Data Engineering",
+    "level": "Intermediate",
+    "price": "99.00",
+    "duration_minutes": 450,
+    "tags": ["data engineer", "analytics engineering", "sql", "dbt", "metrics"],
+    "accent": "cyan"
+  }
+]

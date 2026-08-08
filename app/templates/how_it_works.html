@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="how-hero page-width"><div class="kicker"><span>⌁</span> Under the hood</div><h1>Not “people also bought.”<br><em>A reasoning loop.</em></h1><p>Luma turns recent behavior into a weighted intent brief, searches a real vector index, checks result quality, and asks an LLM to persuade only from the retrieved catalog.</p></section>
+<section class="workflow page-width">
+  <article><span class="step-number">01</span><div class="step-icon">⌁</div><h2>Observe meaningfully</h2><p>Page views, searches, product clicks, and active dwell time arrive in deduplicated batches, off the browsing hot path.</p><small>Browser queue · 5 second batches · sendBeacon fallback</small></article>
+  <div class="workflow-arrow">→</div>
+  <article><span class="step-number">02</span><div class="step-icon">◎</div><h2>Build intent</h2><p>Signals are weighted by strength. Repeated searches and considered time matter more than a passing catalog view.</p><small>Bounded 30-day window · behavior fingerprint cache</small></article>
+  <div class="workflow-arrow">→</div>
+  <article><span class="step-number">03</span><div class="step-icon">⌕</div><h2>Retrieve & grade</h2><p>A Mesh embedding searches Chroma. The graph re-ranks live products, grades retrieval quality, and refines once when weak.</p><small>Semantic score · affinity boost · novelty boost</small></article>
+  <div class="workflow-arrow">→</div>
+  <article><span class="step-number">04</span><div class="step-icon">✦</div><h2>Persuade, grounded</h2><p>Mesh returns strict structured copy using only retrieved IDs. IDs are validated again before the recommendation is stored.</p><small>Schema output · catalog allow-list · stored trace</small></article>
+</section>
+<section class="architecture-note page-width"><div><span class="overline">Efficiency contract</span><h2>Every signal is useful. Not every signal deserves an AI call.</h2></div><div class="architecture-grid"><p><strong>Trigger gate</strong>Five new events or high-intent searches before refresh.</p><p><strong>Cooldown</strong>Ten-minute suppression prevents bursts and duplicate spend.</p><p><strong>Fingerprint cache</strong>Unchanged behavior reuses the stored recommendation.</p><p><strong>Durable sync</strong>A SQL outbox retries catalog-to-vector writes after failures.</p></div></section>
+{% endblock %}

@@ -1,0 +1,25 @@
+<section class="recommendation-shell" aria-labelledby="recommendation-title">
+  <div class="recommendation-copy">
+    <div class="agent-label"><span class="agent-pulse"></span> Luma agent · refreshed {{ recommendation.created_at|relative_time }}</div>
+    <h2 id="recommendation-title">{{ recommendation.headline }}</h2>
+    <p class="recommendation-narrative">{{ recommendation.narrative }}</p>
+    <div class="interest-brief"><span>Why this fits you</span>{{ recommendation.interest_summary }}{% if user.target_role %}<b>Target role: {{ user.target_role }}</b>{% endif %}</div>
+  </div>
+  <div class="recommendation-list">
+    {% for item in recommendation.items %}
+      <a
+        class="recommendation-item"
+        href="/products/{{ item.product.slug }}"
+        data-track-product="{{ item.product.id }}"
+        data-track-source="recommendation"
+      >
+        <span class="rank">0{{ item.rank }}</span>
+        <span class="rec-item-copy">
+          <strong>{{ item.product.title }}</strong>
+          <small>{{ item.reason }}</small>
+        </span>
+        <span class="rec-arrow">↗</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>

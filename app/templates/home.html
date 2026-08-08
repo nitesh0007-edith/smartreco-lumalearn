@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero page-width">
+  <div class="hero-copy">
+    <div class="kicker"><span>✦</span> Learning, tuned to you</div>
+    <h1>Follow your curiosity.<br><em>We’ll find the path.</em></h1>
+    <p class="hero-lede">Explore naturally. Luma notices the themes that keep pulling you back and turns them into a grounded next step—not another generic course list.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#catalog">Explore courses <span>↓</span></a>
+      {% if user %}<a class="button button-secondary" href="/for-you">See my recommendations <span>✦</span></a>{% else %}<a class="button button-secondary" href="/register">Build my learning signal</a>{% endif %}
+    </div>
+    <div class="trust-row"><span><i>✓</i> Real catalog retrieval</span><span><i>✓</i> Cost-aware refreshes</span><span><i>✓</i> Transparent signals</span></div>
+  </div>
+  <div class="signal-visual" aria-label="Illustration of interests becoming recommendations">
+    <div class="signal-card signal-card-one"><span>Search</span><strong>“agent workflows”</strong></div>
+    <div class="signal-card signal-card-two"><span>Time spent</span><strong>RAG systems · 8 min</strong></div>
+    <div class="signal-core"><div class="signal-core-inner">L<span>✦</span></div><small>understanding intent</small></div>
+    <div class="signal-line line-one"></div><div class="signal-line line-two"></div>
+    <div class="signal-result"><span>Next best step</span><strong>Agentic AI Systems</strong><small>94% intent match</small></div>
+  </div>
+</section>
+
+{% if user and recommendation %}
+  <div class="page-width rec-home">{% include "components/recommendation.html" %}</div>
+{% elif user %}
+  <section class="signal-building page-width">
+    <div><span class="agent-pulse"></span><strong>Your signal is warming up</strong><p>Browse, search, and spend time with a few courses. Luma refreshes after meaningful activity—not on every click.</p></div>
+    <a href="/for-you" class="arrow-link">See progress <span>→</span></a>
+  </section>
+{% endif %}
+
+<section class="role-paths page-width">
+  <div class="section-heading"><div><span class="overline">Start with a direction</span><h2>Choose a role. Keep your freedom.</h2></div><p>Every choice becomes part of your learning signal.</p></div>
+  <div class="role-path-grid">
+    <a href="/?q=data+analyst#catalog"><span>01</span><strong>Data Analyst</strong><small>Turn questions into decisions</small><i>↗</i></a>
+    <a href="/?q=data+scientist#catalog"><span>02</span><strong>Data Scientist</strong><small>Find patterns that matter</small><i>↗</i></a>
+    <a href="/?q=ai+engineer#catalog"><span>03</span><strong>AI Engineer</strong><small>Ship intelligent products</small><i>↗</i></a>
+    <a href="/?q=llm#catalog"><span>04</span><strong>LLM Engineer</strong><small>Build useful language systems</small><i>↗</i></a>
+    <a href="/?q=prompt+engineering#catalog"><span>05</span><strong>Prompt Engineer</strong><small>Make models more reliable</small><i>↗</i></a>
+    <a href="/?q=data+engineer#catalog"><span>06</span><strong>Data Engineer</strong><small>Move trusted data at scale</small><i>↗</i></a>
+  </div>
+</section>
+
+<section class="catalog-section page-width" id="catalog">
+  <div class="section-heading">
+    <div><span class="overline">Curated learning paths</span><h2>Find what moves you forward</h2></div>
+    <p>{{ products|length }} course{{ '' if products|length == 1 else 's' }} matched</p>
+  </div>
+  <form class="catalog-controls" action="/" method="get" role="search">
+    <label class="search-box"><span>⌕</span><input type="search" name="q" value="{{ query }}" placeholder="Search skills, topics, or outcomes…"><button type="submit">Search</button></label>
+    <div class="category-pills">
+      <a href="/?q={{ query }}" class="{{ 'selected' if not selected_category else '' }}">All</a>
+      {% for category in categories %}<a href="/?category={{ category|urlencode }}&q={{ query|urlencode }}" class="{{ 'selected' if selected_category == category else '' }}">{{ category }}</a>{% endfor %}
+    </div>
+  </form>
+  {% if products %}
+    <div class="course-grid">
+      {% for product in products %}{% include "components/product_card.html" %}{% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state"><span>⌕</span><h3>No exact match—yet</h3><p>Try a broader skill or clear the category filter.</p><a href="/" class="button button-secondary">Reset search</a></div>
+  {% endif %}
+</section>
+{% endblock %}

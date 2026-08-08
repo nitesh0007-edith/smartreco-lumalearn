@@ -1,0 +1,1 @@
+"""LumaLearn SmartReco application package."""

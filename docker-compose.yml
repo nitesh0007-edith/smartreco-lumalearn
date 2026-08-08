@@ -1,0 +1,12 @@
+services:
+  lumalearn:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - lumalearn_data:/app/data
+
+volumes:
+  lumalearn_data:
