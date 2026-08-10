@@ -94,6 +94,16 @@ You can also run everything with Docker:
 docker compose up --build
 ```
 
+## Deploying on Render
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nitesh0007-edith/smartreco-lumalearn)
+
+The repository includes a `render.yaml` Blueprint for a Docker-based web service. During
+setup, provide `MESH_API_KEY`; Render generates the production `SECRET_KEY`. The free service
+is appropriate for a hackathon demo, but its SQLite and Chroma data reset whenever the service
+sleeps, restarts, or redeploys. For durable use, upgrade the service and attach a persistent disk
+at `/app/data`.
+
 ## Deploying on Vercel
 
 The repository includes `vercel.json` for the FastAPI entrypoint. Configure these Vercel environment variables before deploying: `MESH_API_KEY`, `SECRET_KEY`, `ENVIRONMENT=production`, `DATABASE_URL` (use hosted PostgreSQL rather than SQLite), and `CHROMA_PATH` only when using a persistent vector volume. Vercel's filesystem is ephemeral, so production learner data and vectors should use hosted PostgreSQL plus a hosted Chroma-compatible/Qdrant store before relying on the deployment for persistent writes.

@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: lumalearn-smartreco
+    runtime: docker
+    plan: free
+    branch: main
+    autoDeployTrigger: commit
+    healthCheckPath: /api/health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: MESH_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        value: sqlite:////app/data/smartreco.db
+      - key: CHROMA_PATH
+        value: /app/data/chroma
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: SEED_DEMO_DATA
+        value: "true"
+      - key: SCHEDULER_ENABLED
+        value: "true"
