@@ -1,3 +1,4 @@
+import hashlib
 from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urlparse
@@ -38,6 +39,7 @@ class Settings(BaseSettings):
 
     seed_demo_data: bool = True
     cookie_secure: bool = False
+    admin_email_hashes: str = ""
 
     def validate_runtime(self) -> None:
         if self.is_production and self.secret_key == "development-only-change-me":
@@ -66,6 +68,16 @@ class Settings(BaseSettings):
     @property
     def mesh_configured(self) -> bool:
         return bool(self.mesh_api_key and self.mesh_api_key.startswith("rsk_"))
+
+    def is_admin_email(self, email: str) -> bool:
+        """Match an email without storing the address in deployment configuration."""
+        digest = hashlib.sha256(email.strip().lower().encode()).hexdigest()
+        configured = {
+            value.strip().lower()
+            for value in self.admin_email_hashes.split(",")
+            if len(value.strip()) == 64
+        }
+        return digest in configured
 
 
 @lru_cache

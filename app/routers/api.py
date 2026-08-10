@@ -105,4 +105,5 @@ def health(db: Session = Depends(get_db)):
             "chat_model": settings.mesh_chat_model,
             "embedding_model": settings.mesh_embedding_model,
         },
+        "admin_allowlist_configured": bool(settings.admin_email_hashes),
     }

@@ -19,6 +19,8 @@ services:
         value: /app/data/chroma
       - key: COOKIE_SECURE
         value: "true"
+      - key: ADMIN_EMAIL_HASHES
+        value: 0d08b993e941e6b50bc218bdd23dfc8890ca6bca48c8554de2570870e715468a
       - key: SEED_DEMO_DATA
         value: "true"
       - key: SCHEDULER_ENABLED

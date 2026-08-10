@@ -9,6 +9,7 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.config import get_settings
 from app.database import get_db
 from app.dependencies import optional_user
 from app.models import PasswordResetToken, User
@@ -66,6 +67,7 @@ async def register(request: Request, db: Session = Depends(get_db)):
         name=payload.name.strip(),
         email=email,
         password_hash=hash_password(payload.password),
+        role="admin" if get_settings().is_admin_email(email) else "user",
         target_role=payload.target_role,
     )
     db.add(user)
@@ -225,6 +227,8 @@ async def login(request: Request, db: Session = Depends(get_db)):
             error="This account is inactive.",
             status_code=403,
         )
+    if get_settings().is_admin_email(user.email):
+        user.role = "admin"
     user.last_login_at = datetime.now(UTC)
     db.commit()
     request.session.clear()
