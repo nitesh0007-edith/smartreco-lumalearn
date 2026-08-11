@@ -112,7 +112,7 @@ sequenceDiagram
     Mesh-->>Graph: query vector
     Graph->>Chroma: retrieve active catalogue candidates
     Chroma-->>Graph: cosine-ranked product IDs
-    Graph->>Graph: rerank + grade; refine at most once
+    Graph->>Graph: rerank and grade, refining at most once
     Graph->>Mesh: generate from candidate allow-list
     Mesh-->>Graph: structured recommendation JSON
     Graph->>Graph: Pydantic schema + product-ID validation
