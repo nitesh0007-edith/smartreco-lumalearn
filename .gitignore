@@ -29,3 +29,9 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+# Local submission-production files (keep out of the public application repository)
+docs/LumaLearn-YouTube-Demo-Guide.pdf
+docs/youtube-demo-guide.md
+docs/assets/LumaLearn-YouTube-Thumbnail.png
+scripts/build_youtube_guide.py
